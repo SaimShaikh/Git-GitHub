@@ -177,5 +177,12 @@ git push origin develop
 
 ```
 
+### Q 29 What is Branching Strategy?
+
+Branching strategy is a way of organizing code using different branches so multiple developers can work without conflict. We use branches like feature for development, develop for combining work, release for testing, and main for final production code
+
+---
+
+
 
 **Read all commands here**: [Git Commands](https://github.com/SaimShaikh/Git-GitHub/blob/main/Git/Commands.md)
