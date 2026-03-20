@@ -7,38 +7,53 @@ When everything is ready for testing, we create a release branch from develop. O
 If any bugs are found, we fix them in the release branch itself. Once everything is approved, we merge the release branch into the main branch.
 
 ```bash
-⚙️ Super Simple Command Flow (Easy to Remember)
 
-👉 Just remember this story:
-
-1. Clone project
-git clone repo-url
+⚙️ Step-by-Step Commands (From Start to End)
+🧩 1. Clone the Repository
+git clone https://github.com/org/repo.git
 cd repo
-2. Create feature branch
+🌿 2. Create Feature Branch
 git checkout -b feature/login
-3. Push your work
+
+👉 Work on your code
+
+✅ 3. Commit Changes
 git add .
-git commit -m "done"
+git commit -m "Added login feature"
+🚀 4. Push Feature Branch
 git push origin feature/login
 
-👉 Merge into develop
+👉 Create PR → merge into develop
 
-4. Create release branch (for UAT)
+🔀 5. Switch to Develop Branch
 git checkout develop
-git checkout -b release/v1
-git push origin release/v1
+git pull origin develop
+🟡 6. Create Release Branch (For UAT)
+git checkout -b release/v1.0
+📤 7. Push Release Branch
+git push origin release/v1.0
 
-👉 This goes to UAT
+👉 This branch is connected to UAT deployment pipeline
 
-5. Fix bugs (if any)
+🛠️ 8. Bug Fixes in Release
 git add .
-git commit -m "fix bug"
-git push origin release/v1
+git commit -m "Fix bug in login"
+git push origin release/v1.0
 
-6. Final merge after approval
+👉 UAT gets updated automatically
+
+🔁 9. After UAT Approval
+
+Merge release → main:
+
 git checkout main
-git merge release/v1
+git pull origin main
+git merge release/v1.0
 git push origin main
+🔄 10. Sync Back to Develop
+git checkout develop
+git merge release/v1.0
+git push origin develop
 
 ```
 
