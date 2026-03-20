@@ -42,6 +42,8 @@ git push origin release/v1.0
 
 👉 UAT gets updated automatically
 
+
+
 🔁 9. After UAT Approval
 
 Merge release → main:
