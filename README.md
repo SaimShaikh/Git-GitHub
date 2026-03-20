@@ -1,4 +1,4 @@
-# Day 3 Git
+
 
 ### Q 1 What is Git?
 
@@ -116,5 +116,66 @@ If a branch is deleted accidentally, it can be recovered using `git reflog` by f
 `git restore` is used to undo changes in files by restoring them from the staging area or the last commit; it can also be used to unstage files.
 
 -----
+
+### Q 28 Suppose you are working in a team and have to create a branching strategy where only the release branch goes to the UAT environment. Can you walk me through the commands you would use from cloning to pushing? 
+
+In our team, we use different branches for different stages. First, I clone the project and create a feature branch to work on my task. After completing it, I push it and merge it into the develop branch.
+
+When everything is ready for testing, we create a release branch from develop. Only this release branch is connected to the UAT environment. So when we push this branch, it automatically gets deployed to UAT.
+
+If any bugs are found, we fix them in the release branch itself. Once everything is approved, we merge the release branch into the main branch.
+
+
+
+```bash
+⚙️ Step-by-Step Commands (From Start to End)
+🧩 1. Clone the Repository
+git clone https://github.com/org/repo.git
+cd repo
+🌿 2. Create Feature Branch
+git checkout -b feature/login
+
+👉 Work on your code
+
+✅ 3. Commit Changes
+git add .
+git commit -m "Added login feature"
+🚀 4. Push Feature Branch
+git push origin feature/login
+
+👉 Create PR → merge into develop
+
+🔀 5. Switch to Develop Branch
+git checkout develop
+git pull origin develop
+🟡 6. Create Release Branch (For UAT)
+git checkout -b release/v1.0
+📤 7. Push Release Branch
+git push origin release/v1.0
+
+👉 This branch is connected to UAT deployment pipeline
+
+🛠️ 8. Bug Fixes in Release
+git add .
+git commit -m "Fix bug in login"
+git push origin release/v1.0
+
+👉 UAT gets updated automatically
+
+🔁 9. After UAT Approval
+
+Merge release → main:
+
+git checkout main
+git pull origin main
+git merge release/v1.0
+git push origin main
+🔄 10. Sync Back to Develop
+git checkout develop
+git merge release/v1.0
+git push origin develop
+
+```
+
 
 **Read all commands here**: [Git Commands](https://github.com/SaimShaikh/Git-GitHub/blob/main/Git/Commands.md)
